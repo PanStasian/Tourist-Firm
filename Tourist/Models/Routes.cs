@@ -17,16 +17,19 @@ namespace Tourist.Models
     {
         
         public int route_id { get; set; }
-        [DisplayName("Маршруты")]
+        [DisplayName("Маршрут")]
         public string route_name { get; set; }
         public int departure_id { get; set; }
         public int destination_id { get; set; }
+        [DisplayName("Цена")]
         public double price { get; set; }
         public Nullable<int> sights_id { get; set; }
+        [DisplayName("Время полёта")]
         public double flight { get; set; }
     
-       
+        [DisplayName("Отправление")]
         public virtual Departure Departure { get; set; }
+        [DisplayName("Прибытие")]
         public virtual Destination Destination { get; set; }
     }
 }

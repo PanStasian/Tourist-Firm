@@ -11,7 +11,8 @@ namespace Tourist.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Sights
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,10 @@ namespace Tourist.Models
         }
     
         public int sight_id { get; set; }
+        [DisplayName("Достопримечательность")]
         public string sight_name { get; set; }
         public int city_id { get; set; }
+        [DisplayName("Рейтинг")]
         public int rating { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

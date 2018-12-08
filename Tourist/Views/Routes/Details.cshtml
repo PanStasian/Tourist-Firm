@@ -1,0 +1,125 @@
+﻿@model Tourist.Models.Routes
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.route_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departure.departure_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination.destination_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.flight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination.Sights.sight_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination.Sights.rating)
+            </th>
+
+            <th></th>
+        </tr>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.route_name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Departure.departure_name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Destination.destination_name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.price)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.flight)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Destination.Sights.sight_name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Destination.Sights.rating)
+            </td>
+        </tr>
+
+
+    </table>
+
+    @*
+        <div>
+            <h4>Routes</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.route_name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.route_name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.price)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.flight)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.flight)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Departure.departure_name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Departure.departure_name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Destination.destination_name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Destination.destination_name)
+                </dd>
+
+            </dl>
+        </div>
+    *@
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.route_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -9,35 +9,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <title>Delete</title>
 </head>
 <body>
-
-    <table>
-        <dt>
-            @Html.DisplayNameFor(model => model.route_name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.route_name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Departure.departure_name)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.Destination.destination_name)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.Destination.Sights.sight_name)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.flight)
-        </dt>
-    </table>
-
-
+    <h3>Are you sure you want to delete this?</h3>
     <div>
         <h4>Routes</h4>
         <hr />
@@ -91,10 +66,15 @@
             </dd>
     
         </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.route_id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
 </body>
 </html>

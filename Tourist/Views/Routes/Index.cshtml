@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Tourist.Models.Routes>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/mainLink.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/media.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <!-- <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>  --> <!-- скролл по якорям -->
+    <script type="text/javascript" src="~/js/scroll.js"></script>   <!-- скролл по странице -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- <script type="text/javascript" src="top.js"></script> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="services" id="contracts">
+        @foreach (var route in Model)
+        {
+            <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span class="glyphicon glyphicon-ok check col-lg-3 col-md-3 col-sm-3 col-xs-3"></span><span class="col-lg-4 col-md-4 col-sm-9 col-xs-9">@route.route_name</span>
+                @Html.ActionLink("Изменить", "Edit", new { id = route.route_id }) |
+                @Html.ActionLink("Узнать больше", "Details", new { id = route.route_id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = route.route_id })
+            </h4>
+        }
+        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <span class="col-lg-9 col-md-9 col-sm-9 col-xs-9">@Html.ActionLink("Create New", "Create")</span>
+        </h4>
+    </div>
+
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @*
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.route_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sights_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.flight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Departure.departure_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Destination.destination_name)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.route_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sights_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.flight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Departure.departure_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destination.destination_name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.route_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.route_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.route_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    *@
+</body>
+</html>

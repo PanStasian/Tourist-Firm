@@ -11,7 +11,8 @@ namespace Tourist.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Destination
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,7 @@ namespace Tourist.Models
         }
     
         public int destination_id { get; set; }
+        [DisplayName("Прибытие")]
         public string destination_name { get; set; }
         public Nullable<int> sights_id { get; set; }
     
