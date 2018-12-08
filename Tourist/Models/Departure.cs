@@ -20,7 +20,8 @@ namespace Tourist.Models
         {
             this.Routes = new HashSet<Routes>();
         }
-    
+
+        [DisplayName("Отправление")]
         public int departutre_id { get; set; }
         [DisplayName("Отправление")]
         public string departure_name { get; set; }

@@ -21,7 +21,8 @@ namespace Tourist.Models
             this.Routes = new HashSet<Routes>();
             this.Sights1 = new HashSet<Sights>();
         }
-    
+
+        [DisplayName("Прибытие")]
         public int destination_id { get; set; }
         [DisplayName("Прибытие")]
         public string destination_name { get; set; }

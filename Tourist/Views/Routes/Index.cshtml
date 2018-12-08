@@ -35,68 +35,9 @@
             </h4>
         }
         <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <span class="col-lg-9 col-md-9 col-sm-9 col-xs-9">@Html.ActionLink("Create New", "Create")</span>
+            <span class="col-lg-9 col-md-9 col-sm-9 col-xs-9">@Html.ActionLink("Создать маршрут", "Create")</span>
         </h4>
     </div>
 
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    @*
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.route_name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.sights_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.flight)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Departure.departure_name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Destination.destination_name)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.route_name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.sights_id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.flight)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Departure.departure_name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Destination.destination_name)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.route_id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.route_id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.route_id })
-                    </td>
-                </tr>
-            }
-
-        </table>
-    *@
 </body>
 </html>

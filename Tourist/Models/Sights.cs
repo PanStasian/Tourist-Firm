@@ -20,7 +20,8 @@ namespace Tourist.Models
         {
             this.Destination = new HashSet<Destination>();
         }
-    
+
+        [DisplayName("Достопримечательность")]
         public int sight_id { get; set; }
         [DisplayName("Достопримечательность")]
         public string sight_name { get; set; }
