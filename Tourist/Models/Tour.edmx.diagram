@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6fe606589d09419ca2ca108e3708729c" Name="Diagram1">
+        <EntityTypeShape EntityType="TouristicModel.Departure" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TouristicModel.Destination" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TouristicModel.Routes" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TouristicModel.Sights" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="TouristicModel.FK_Routes_Departure" ManuallyRouted="false" />
+        <AssociationConnector Association="TouristicModel.FK_Destination_Sights" ManuallyRouted="false" />
+        <AssociationConnector Association="TouristicModel.FK_Routes_Destination" ManuallyRouted="false" />
+        <AssociationConnector Association="TouristicModel.FK_Sights_Destination" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

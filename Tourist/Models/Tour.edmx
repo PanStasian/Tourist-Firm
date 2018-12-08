@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище TouristicModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departure">
+          <Key>
+            <PropertyRef Name="departutre_id" />
+          </Key>
+          <Property Name="departutre_id" Type="int" Nullable="false" />
+          <Property Name="departure_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="destination_id" />
+          </Key>
+          <Property Name="destination_id" Type="int" Nullable="false" />
+          <Property Name="destination_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sights_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Routes">
+          <Key>
+            <PropertyRef Name="route_id" />
+          </Key>
+          <Property Name="route_id" Type="int" Nullable="false" />
+          <Property Name="route_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="departure_id" Type="int" Nullable="false" />
+          <Property Name="destination_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="sights_id" Type="int" />
+          <Property Name="flight" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sights">
+          <Key>
+            <PropertyRef Name="sight_id" />
+          </Key>
+          <Property Name="sight_id" Type="int" Nullable="false" />
+          <Property Name="sight_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city_id" Type="int" Nullable="false" />
+          <Property Name="rating" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Destination_Sights">
+          <End Role="Sights" Type="Self.Sights" Multiplicity="0..1" />
+          <End Role="Destination" Type="Self.Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sights">
+              <PropertyRef Name="sight_id" />
+            </Principal>
+            <Dependent Role="Destination">
+              <PropertyRef Name="sights_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Routes_Departure">
+          <End Role="Departure" Type="Self.Departure" Multiplicity="1" />
+          <End Role="Routes" Type="Self.Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departure">
+              <PropertyRef Name="departutre_id" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="departure_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Routes_Destination">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Routes" Type="Self.Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="destination_id" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="destination_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sights_Destination">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Sights" Type="Self.Sights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="destination_id" />
+            </Principal>
+            <Dependent Role="Sights">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище TouristicModelContainer">
+          <EntitySet Name="Departure" EntityType="Self.Departure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Destination" EntityType="Self.Destination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Routes" EntityType="Self.Routes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sights" EntityType="Self.Sights" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Destination_Sights" Association="Self.FK_Destination_Sights">
+            <End Role="Sights" EntitySet="Sights" />
+            <End Role="Destination" EntitySet="Destination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Routes_Departure" Association="Self.FK_Routes_Departure">
+            <End Role="Departure" EntitySet="Departure" />
+            <End Role="Routes" EntitySet="Routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Routes_Destination" Association="Self.FK_Routes_Destination">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="Routes" EntitySet="Routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sights_Destination" Association="Self.FK_Sights_Destination">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="Sights" EntitySet="Sights" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TouristicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departure">
+          <Key>
+            <PropertyRef Name="departutre_id" />
+          </Key>
+          <Property Name="departutre_id" Type="Int32" Nullable="false" />
+          <Property Name="departure_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Routes" Relationship="Self.FK_Routes_Departure" FromRole="Departure" ToRole="Routes" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="destination_id" />
+          </Key>
+          <Property Name="destination_id" Type="Int32" Nullable="false" />
+          <Property Name="destination_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sights_id" Type="Int32" />
+          <NavigationProperty Name="Sights" Relationship="Self.FK_Destination_Sights" FromRole="Destination" ToRole="Sights" />
+          <NavigationProperty Name="Routes" Relationship="Self.FK_Routes_Destination" FromRole="Destination" ToRole="Routes" />
+          <NavigationProperty Name="Sights1" Relationship="Self.FK_Sights_Destination" FromRole="Destination" ToRole="Sights" />
+        </EntityType>
+        <EntityType Name="Routes">
+          <Key>
+            <PropertyRef Name="route_id" />
+          </Key>
+          <Property Name="route_id" Type="Int32" Nullable="false" />
+          <Property Name="route_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departure_id" Type="Int32" Nullable="false" />
+          <Property Name="destination_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="sights_id" Type="Int32" />
+          <Property Name="flight" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Departure" Relationship="Self.FK_Routes_Departure" FromRole="Routes" ToRole="Departure" />
+          <NavigationProperty Name="Destination" Relationship="Self.FK_Routes_Destination" FromRole="Routes" ToRole="Destination" />
+        </EntityType>
+        <EntityType Name="Sights">
+          <Key>
+            <PropertyRef Name="sight_id" />
+          </Key>
+          <Property Name="sight_id" Type="Int32" Nullable="false" />
+          <Property Name="sight_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city_id" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Destination" Relationship="Self.FK_Destination_Sights" FromRole="Sights" ToRole="Destination" />
+          <NavigationProperty Name="Destination1" Relationship="Self.FK_Sights_Destination" FromRole="Sights" ToRole="Destination" />
+        </EntityType>
+        <Association Name="FK_Routes_Departure">
+          <End Role="Departure" Type="Self.Departure" Multiplicity="1" />
+          <End Role="Routes" Type="Self.Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departure">
+              <PropertyRef Name="departutre_id" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="departure_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destination_Sights">
+          <End Role="Sights" Type="Self.Sights" Multiplicity="0..1" />
+          <End Role="Destination" Type="Self.Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sights">
+              <PropertyRef Name="sight_id" />
+            </Principal>
+            <Dependent Role="Destination">
+              <PropertyRef Name="sights_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Routes_Destination">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Routes" Type="Self.Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="destination_id" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="destination_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sights_Destination">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Sights" Type="Self.Sights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="destination_id" />
+            </Principal>
+            <Dependent Role="Sights">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TouristicEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departure" EntityType="Self.Departure" />
+          <EntitySet Name="Destination" EntityType="Self.Destination" />
+          <EntitySet Name="Routes" EntityType="Self.Routes" />
+          <EntitySet Name="Sights" EntityType="Self.Sights" />
+          <AssociationSet Name="FK_Routes_Departure" Association="Self.FK_Routes_Departure">
+            <End Role="Departure" EntitySet="Departure" />
+            <End Role="Routes" EntitySet="Routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destination_Sights" Association="Self.FK_Destination_Sights">
+            <End Role="Sights" EntitySet="Sights" />
+            <End Role="Destination" EntitySet="Destination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Routes_Destination" Association="Self.FK_Routes_Destination">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="Routes" EntitySet="Routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sights_Destination" Association="Self.FK_Sights_Destination">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="Sights" EntitySet="Sights" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TouristicModelContainer" CdmEntityContainer="TouristicEntities">
+          <EntitySetMapping Name="Departure">
+            <EntityTypeMapping TypeName="TouristicModel.Departure">
+              <MappingFragment StoreEntitySet="Departure">
+                <ScalarProperty Name="departutre_id" ColumnName="departutre_id" />
+                <ScalarProperty Name="departure_name" ColumnName="departure_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destination">
+            <EntityTypeMapping TypeName="TouristicModel.Destination">
+              <MappingFragment StoreEntitySet="Destination">
+                <ScalarProperty Name="destination_id" ColumnName="destination_id" />
+                <ScalarProperty Name="destination_name" ColumnName="destination_name" />
+                <ScalarProperty Name="sights_id" ColumnName="sights_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Routes">
+            <EntityTypeMapping TypeName="TouristicModel.Routes">
+              <MappingFragment StoreEntitySet="Routes">
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+                <ScalarProperty Name="route_name" ColumnName="route_name" />
+                <ScalarProperty Name="departure_id" ColumnName="departure_id" />
+                <ScalarProperty Name="destination_id" ColumnName="destination_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="sights_id" ColumnName="sights_id" />
+                <ScalarProperty Name="flight" ColumnName="flight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sights">
+            <EntityTypeMapping TypeName="TouristicModel.Sights">
+              <MappingFragment StoreEntitySet="Sights">
+                <ScalarProperty Name="sight_id" ColumnName="sight_id" />
+                <ScalarProperty Name="sight_name" ColumnName="sight_name" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
