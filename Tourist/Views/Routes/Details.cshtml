@@ -78,10 +78,11 @@
         </tr>
     </table>
 
-    <a href="javascript:window.print()">Распечатать</a>
+    
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.route_id }) |
-        @Html.ActionLink("Back to List", "Index")
+        <a href="javascript:window.print()">Распечатать</a> |
+        @Html.ActionLink("Редактировать", "Edit", new { id = Model.route_id }) |
+        @Html.ActionLink("Назад к списку", "Index")
     </p>
 </body>
 </html>
