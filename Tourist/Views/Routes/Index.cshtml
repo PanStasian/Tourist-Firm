@@ -28,6 +28,7 @@
     <div class="jumbotron jumbotrons">
         <h1>Список предоставляемых маршрутов</h1>
     </div>
+    <button class="alert-info">@Html.ActionLink("Поиск", "Index", "Search")</button>
     <div class="services" id="contracts">
         @foreach (var route in Model)
         {
@@ -43,9 +44,7 @@
         </h4>
     </div>
 
-    <div class="flter">
-        <button class="alert-info">@Html.ActionLink("Фильтр", "FilterView")</button>
-    </div>
+
 
 
 

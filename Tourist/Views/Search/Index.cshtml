@@ -26,25 +26,102 @@
 </head>
 <body>
 
-    <div class="jumbotron jumbotrons">
+    <div>
         @using (Html.BeginForm("Index", "Search", FormMethod.Get))
         {
-            @Html.TextBox("search_dep")
-            @Html.TextBox("search_dest")
-            <input type="submit" value="submit" />
-        }
-        @foreach (var route in Model)
-        {
-            <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <span class="glyphicon glyphicon-ok check col-lg-3 col-md-3 col-sm-3 col-xs-3"></span><span class="col-lg-4 col-md-4 col-sm-9 col-xs-9">@route.route_name</span>
+            <table class="table">
+                <tr class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <th>
+                        @Html.Label("Откуда вылет:")
+                    </th>
+                    <th>
+                        @Html.TextBox("search_dep")
+                    </th>
+                </tr>
 
-            </h4>
+                <tr class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <td>
+                        @Html.Label("Куда летим:")
+                    </td>
+                    <td>
+                        @Html.TextBox("search_dest")
+                    </td>
+                </tr>
+
+                <tr class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <td>
+                        @Html.Label("Сколько готовы потратить:")
+                    </td>
+                    <td>
+                        @Html.TextBox("search_price")
+                    </td>
+                </tr>
+            </table>
+
+            <input type="submit" class="alert-danger" value="Выбрать" />
         }
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.route_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Departure.departure_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Destination.destination_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.flight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Destination.Sights.sight_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Destination.Sights.rating)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.route_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departure.departure_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination.destination_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.flight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination.Sights.sight_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination.Sights.rating)
+                </td>
+                <td>
+                    @Html.ActionLink("Выбрать", "Details", new { id = item.route_id })
+                </td>
+            </tr>
+
+            }
+        </table>
 
     </div>
 
-    
-
+    <a href="javascript:window.print()">Распечатать</a>
+    <button class="alert-info">@Html.ActionLink("Выбрать маршрут", "Index", "Routes")</button>
 </body>
 </html>
 

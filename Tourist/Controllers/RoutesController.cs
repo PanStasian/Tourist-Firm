@@ -135,36 +135,6 @@ namespace Tourist.Controllers
         }
 
 
-        public ActionResult FilterView(string departure, string destination, int? price, int? flight)
-        {
-            RouteContext rc = new RouteContext();
-            IQueryable<Routes> routes= rc.Routes.Include(r => r.Departure).Include(r => r.Destination);
-            if (departure != null)
-            {
-                routes = routes.Where(r => r.Departure.departure_name == departure);
-            }
-            if (destination != null)
-            {
-                routes = routes.Where(r => r.Destination.destination_name == destination);
-            }
-           // if(price!=null && price != 0)
-           // {
-           //     routes = routes.Where(r => r.price == price);
-           // }
-           // if(flight!=null && flight != 0)
-           // {
-           //     routes = routes.Where(r => r.flight == flight);
-           // }
-            List<Routes> selectedRoutes = rc.Routes.ToList();
-
-            RoutesList rl = new RoutesList()
-            {
-                Departure = new SelectList(departure),
-                Destination = new SelectList(destination)
-            };
-
-            return View(rl);
-        }
-
+       
     }
 }

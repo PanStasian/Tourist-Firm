@@ -8,23 +8,10 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/mainLink.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/css/media.css" />
-    <link rel="stylesheet" href="css/fonts.css" />
-    <!-- <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>  --> <!-- скролл по якорям -->
-    <script type="text/javascript" src="~/js/scroll.js"></script>   <!-- скролл по странице -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <!-- <script type="text/javascript" src="top.js"></script> -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Details</title>
 </head>
 <body>
-
     <table class="table">
         <tr>
             <th>
@@ -77,12 +64,9 @@
             </td>
         </tr>
     </table>
-
-    
     <p>
-        <a href="javascript:window.print()">Распечатать</a> |
-        @Html.ActionLink("Редактировать", "Edit", new { id = Model.route_id }) |
-        @Html.ActionLink("Назад к списку", "Index") |
+        <a href="javascript:window.print()">Распечатать</a>
+        @Html.ActionLink("Back to List", "Index")
     </p>
 </body>
 </html>
