@@ -145,7 +145,6 @@
     <Compile Include="Models\Destination.cs">
       <DependentUpon>Tour.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RouteContext.cs" />
     <Compile Include="Models\Routes.cs">
       <DependentUpon>Tour.tt</DependentUpon>
     </Compile>

@@ -32,10 +32,4 @@ namespace Tourist.Models
         public virtual DbSet<Sights> Sights { get; set; }
     }
 
-    public class RoutesList
-    {
-        public SelectList Routes { get; set; }
-        public SelectList Departure { get; set; }
-        public SelectList Destination { get; set; }
-    }
 }
